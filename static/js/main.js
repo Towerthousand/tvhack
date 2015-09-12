@@ -1,7 +1,21 @@
 (function() {
 
-  var SERVER_URL = 'http://104.131.78.132:5000/api/';
+  var SERVER_URL = 'http://104.131.78.132:80/api/';
   var username = 'u1';
+  window.keyEnum = {
+    enter: 13,
+    rightArrow: 39,
+    leftArrow: 37,
+    1: 49,
+    2: 50,
+    3: 51,
+    4: 52,
+    5: 53,
+    6: 54,
+    7: 55,
+    8: 56,
+    9: 57
+  };
 
   //angular
   var MainCtrl = function($scope, $http) {
@@ -14,6 +28,8 @@
     if (!!navigator.setWebSecurityEnabled){
       navigator.setWebSecurityEnabled(false);
     }
+
+    window.onkeydown = this.handleControlKey;
 
     this.http = $http;
     this.carers = [];
@@ -35,10 +51,25 @@
     });
   };
 
+  MainCtrl.prototype.handleControlKey = function(e) {
+    var code = e.keyCode;
+
+    if (code == keyEnum.enter) {
+      console.log(this.state);
+      if (!this.state) {
+        this.state = 'accordion';
+      }
+
+      // if (this.state = 'accordion') {
+      //   this.state = 'calling';
+      // }
+    }
+  }
+
   MainCtrl.prototype.pingOnline = function() {
     this.http({
       method: 'GET',
-      url: SERVER_URL + 'stayOnline/' + this.username + '/'
+      url: SERVER_URL + 'stayOnline/' + username + '/'
     });
   };
 

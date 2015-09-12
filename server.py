@@ -42,7 +42,7 @@ def user_carer(uid):
     return jsonify(user)
 
 
-@app.route('/api/stayOnline/<uid>', methods=['GET'])
+@app.route('/api/stayOnline/<uid>/', methods=['GET'])
 def stay_alive(uid):
     """ Notifies the server that uid is still online """
     return 'OK'

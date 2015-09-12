@@ -10,6 +10,8 @@ html, body {
 
 #accordion {
   background: rgba(255, 255, 255, 0.5);
+  height: 2rem;
+  width: 2em;
 
   #accordion-list {
     padding: 0;
@@ -19,6 +21,16 @@ html, body {
       float: left;
       margin: 0;
       padding: 0;
+
+      img {
+        height: 1rem;
+        width: 1rem;
+      }
+
+      .name {
+        max-width: 100%;
+        text-overflow: ellipsis;
+      }
     }
   }
 }
@@ -50,8 +62,4 @@ html, body {
   #decline {
     background: $danger;
   }
-}
-
-#accordion {
-
 }

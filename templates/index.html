@@ -20,17 +20,20 @@
       <div id="answer">Answer</div>
       <div id="decline">Decline</div>
     </div>
+    [[ ctrl.state ]]
 
-    <div id="accordion">
-      <div id="accordion-container">
-        <ul id="accordion-list">
-          <li class="carer" ng-repeat="carer in ctrl.carers">
-            <img ng-src="[[ carer.profilePicUrl ]]" alt="">
-            <div class="name">
-              [[ carer.firstName ]] [[ carer.lastName ]]
-            </div>
-          </li>
-        </ul>
+    <div id="container" ng-show="ctrl.state">
+      <div id="accordion" ng-show="ctrl.state == 'accordion'">
+        <div id="accordion-container">
+          <ul id="accordion-list">
+            <li class="carer" ng-repeat="carer in ctrl.carers">
+              <img ng-src="[[ carer.profilePicUrl ]]" alt="">
+              <div class="name">
+                [[ carer.firstName ]] [[ carer.lastName ]]
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </body>

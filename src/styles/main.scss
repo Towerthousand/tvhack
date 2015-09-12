@@ -3,36 +3,40 @@ $danger: #d9534f;
 
 html, body {
   background: transparent;
-  background: #000;
+  background: #900;
   font-family: Lato;
   font-size: 20px;
+}
 
-  #notification {
-    display: table;
-    border-radius: 0.2rem;
-    background: rgba(255, 255, 255, 0.5);
-    font-weight: bold;
-    position: absolute;
-    top: 0.2rem;
-    left: 0.2rem;
+#notification {
+  display: table;
+  border-radius: 0.2rem;
+  background: rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
 
-    > div {
-      display: table-cell;
-      padding: 0.5rem;
-      vertical-align: middle;
-    }
-
-    #profile {
-      height: 2.5rem;
-      border-radius: 50%;
-    }
-
-    #answer {
-      background: $success;
-    }
-
-    #decline {
-      background: $danger;
-    }
+  > div {
+    display: table-cell;
+    padding: 0.5rem;
+    vertical-align: middle;
   }
+
+  #profile {
+    height: 2.5rem;
+    border-radius: 50%;
+  }
+
+  #answer {
+    background: $success;
+  }
+
+  #decline {
+    background: $danger;
+  }
+}
+
+#accordion {
+
 }

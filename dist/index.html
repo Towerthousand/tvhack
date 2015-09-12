@@ -5,9 +5,12 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="assets/css/main.min.css">
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/main.js"></script>
   </head>
-  <body>
-    <div id="notification">
+  <body ng-app="livesaver" ng-controller="main">
+    <!-- <div id="notification">
       <div>
         <img id="profile" src="assets/img/profile.jpg" alt="">
       </div>
@@ -16,6 +19,14 @@
       </div>
       <div id="answer">Answer</div>
       <div id="decline">Decline</div>
+    </div> -->
+
+    <div id="accordion">
+      <div id="accordion-container">
+        <ul id="accordion-list">
+          <li class="carer"></li>
+        </ul>
+      </div>
     </div>
   </body>
 </html>

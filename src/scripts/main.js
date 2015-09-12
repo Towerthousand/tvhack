@@ -8,3 +8,15 @@ if (!!navigator.setWebSecurityEnabled){
   navigator.setWebSecurityEnabled(false);
 }
 
+var carersRef = new Firebase("https://tvhack.firebaseio.com/users-carer");
+
+carersRef.once('value', function(snapshot) {
+  console.log(snapshot, snapshot.val());
+});
+
+
+angular.module('livesaver', [])
+
+.controller('main', function($scope) {
+  $scope.test = 20;
+})

@@ -55,7 +55,6 @@
     var code = e.keyCode;
 
     if (code == keyEnum.enter) {
-      console.log(this.state);
       if (!this.state) {
         this.state = 'accordion';
       }

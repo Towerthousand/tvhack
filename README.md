@@ -58,7 +58,7 @@ Returns the user objects taking care of a given user
 }
 ```
 
-## PUSH /api/stayOnline/&lt;uid&gt;/
+## GET /api/stayOnline/&lt;uid&gt;/
 Notifies the server that the user is still alive
 
 ## GET /api/user-tv/&lt;uid&gt;/

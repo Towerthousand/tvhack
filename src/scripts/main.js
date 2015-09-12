@@ -11,8 +11,8 @@
 
 
   var tvUser = 'u1';
-  var carerUsersRef = new Firebase('https://tvhack.firebaseio.com/users-carer');
-  var tvUserRef = new Firebase('https://tvhack.firebaseio.com/users-tv/' + tvUser);
+  var carerUsersRef = new Firebase('http://tvhack.firebaseio.com/users-carer');
+  var tvUserRef = new Firebase('http://tvhack.firebaseio.com/users-tv/' + tvUser);
 
   carerUsersRef.once('value', function(snap) {
   });

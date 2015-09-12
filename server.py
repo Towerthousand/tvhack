@@ -19,6 +19,7 @@ def index():
 
 @app.route('/api/isCaredBy/<uid>/', methods=['GET'])
 def users(uid):
+    """ Returns the user objects taking care of a given user """
     users = firebase.get('/users-tv/' + uid + '/isCaredBy', None)
     users_info = []
     for user in users:

@@ -1,25 +1,38 @@
+$success: #5cb85c;
+$danger: #d9534f;
+
 html, body {
   background: transparent;
   background: #000;
   font-family: Lato;
-  font-size: 5vw;
+  font-size: 20px;
 
   #notification {
     display: table;
     border-radius: 0.2rem;
     background: rgba(255, 255, 255, 0.5);
     font-weight: bold;
-    padding: 0.5rem;
+    position: absolute;
+    top: 0.2rem;
+    left: 0.2rem;
 
-    #profile, #name {
+    > div {
       display: table-cell;
+      padding: 0.5rem;
       vertical-align: middle;
     }
 
     #profile {
       height: 2.5rem;
       border-radius: 50%;
-      margin-right: 0.5rem;
+    }
+
+    #answer {
+      background: $success;
+    }
+
+    #decline {
+      background: $danger;
     }
   }
 }

@@ -2,21 +2,29 @@ html, body {
   background: transparent;
   background: #000;
   font-family: Lato;
-  font-size: 5vw;
+  font-size: 20px;
 }
 html #notification, body #notification {
   display: table;
   border-radius: 0.2rem;
   background: rgba(255, 255, 255, 0.5);
   font-weight: bold;
-  padding: 0.5rem;
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
 }
-html #notification #profile, html #notification #name, body #notification #profile, body #notification #name {
+html #notification > div, body #notification > div {
   display: table-cell;
+  padding: 0.5rem;
   vertical-align: middle;
 }
 html #notification #profile, body #notification #profile {
   height: 2.5rem;
   border-radius: 50%;
-  margin-right: 0.5rem;
+}
+html #notification #answer, body #notification #answer {
+  background: #5cb85c;
+}
+html #notification #decline, body #notification #decline {
+  background: #d9534f;
 }

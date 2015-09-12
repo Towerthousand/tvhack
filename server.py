@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2.7
+
+from origin import crossdomain
 
 from flask import Flask
 from flask import jsonify
@@ -17,6 +19,7 @@ def index():
     return render_template('index.html')
 
 
+@crossdomain(origin='*')
 @app.route('/api/isCaredBy/<uid>/', methods=['GET'])
 def usersCaredBy(uid):
     """ Returns the user objects taking care of a given user """
@@ -28,6 +31,7 @@ def usersCaredBy(uid):
     return jsonify({'users': users_info})
 
 
+@crossdomain(origin='*')
 @app.route('/api/user-tv/<uid>/', methods=['GET'])
 def user_tv(uid):
     """ Returns the requested tv user object  """
@@ -35,6 +39,7 @@ def user_tv(uid):
     return jsonify(user)
 
 
+@crossdomain(origin='*')
 @app.route('/api/user-carer/<uid>/', methods=['GET'])
 def user_carer(uid):
     """ Returns the requested carer user object """
@@ -42,7 +47,8 @@ def user_carer(uid):
     return jsonify(user)
 
 
-@app.route('/api/stayOnline/<uid>/', methods=['GET'])
+@crossdomain(origin='*')
+@app.route('/api/stayOnline/<uid>', methods=['GET'])
 def stay_alive(uid):
     """ Notifies the server that uid is still online """
     return 'OK'

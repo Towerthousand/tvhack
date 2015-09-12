@@ -31,31 +31,29 @@ Endpoints
 Returns the user objects taking care of a given user
 ```
 {
-      "users": [
-          {
-                    "active": false,
-                          "caresFor": [
-                                  "u1"
-                                        ],
-                                              "firstName": "Andrew",
-                                                    "inbound-notifications": {
-                                                                "data": {
-                                                                              "body": "You haven't called in 3 weeks, show some love!  ",
-                                                                                        "title": "Dani is online <3 "
-                                                                                                }
-                                                                                                      },
-                                                                                                            "lastName": "Milson"
-                                                                                                                },
-                                                                                                                    {
-                                                                                                                              "active": true,
-                                                                                                                                    "caresFor": [
-                                                                                                                                            "u1"
-                                                                                                                                                  ],
-                                                                                                                                                        "firstName": "Miquel",
-                                                                                                                                                              "lastName": "Llobet"
-                                                                                                                                                                  }
-                                                                                                                                                                    ]
+    "users": [
+        {
+            "active": false,
+            "caresFor": [
+                "u1"
+            ],
+            "firstName": "Andrew",
+            "inbound-notifications": {
+                "data": {
+                    "body": "You haven't called in 3 weeks, show some love!  ",
+                    "title": "Dani is online <3 "
+                }
+            },
+            "lastName": "Milson"
+        },
+        {
+            "active": true,
+            "caresFor": [
+                "u1"
+            ],
+            "firstName": "Miquel",
+            "lastName": "Llobet"
+        }
+    ]
 }
 ```
-
-

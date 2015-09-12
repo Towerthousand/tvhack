@@ -1,6 +1,25 @@
-//Roboto google font
-@import url(https://fonts.googleapis.com/css?family=Roboto:500,900italic,900,400italic,100,700italic,300,700,500italic,100italic,300italic,400);
-//Montserrat google font
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-//theme colors, from https://color.adobe.com/indigo-shades-color-theme-1059474/ by emago
-@import "bootstrap";
+html, body {
+  background: transparent;
+  background: #000;
+  font-family: Lato;
+  font-size: 5vw;
+
+  #notification {
+    display: table;
+    border-radius: 0.2rem;
+    background: rgba(255, 255, 255, 0.5);
+    font-weight: bold;
+    padding: 0.5rem;
+
+    #profile, #name {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    #profile {
+      height: 2.5rem;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+  }
+}

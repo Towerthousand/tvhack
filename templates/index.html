@@ -9,7 +9,7 @@
     <script src="assets/js/angular.min.js"></script>
     <script src="assets/js/main.js"></script>
   </head>
-  <body ng-app="livesaver" ng-controller="main">
+  <body ng-app="livesaver" ng-controller="main as ctrl">
     <div id="notification">
       <div>
         <img id="profile" src="assets/img/profile.jpg" alt="">
@@ -24,7 +24,7 @@
     <div id="accordion">
       <div id="accordion-container">
         <ul id="accordion-list">
-          <li class="carer" ng-repeat="carer in carers">
+          <li class="carer" ng-repeat="carer in ctrl.carers">
             {{carer}}
           </li>
         </ul>

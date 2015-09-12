@@ -45,7 +45,7 @@ gulp.task('fonts', function() {
 });
 
 gulp.task('dependencies', function() {
-  return gulp.src(['bower_components/**/*.min.js', '!bower_components/**/src/**/*.min.js'])
+  return gulp.src(['bower_components/**/*.min.js', 'bower_components/**/*.min.js.map', '!bower_components/**/src/**/*.min.js'])
     .pipe(flatten({ includeParents: 0}))
     .pipe(gulp.dest('dist/assets/js'))
     .pipe(notify({ message: 'Dependencies task complete' }));

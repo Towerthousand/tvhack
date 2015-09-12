@@ -19,11 +19,12 @@
     this.carers = [];
     var self = this;
     this.stayAlive = setInterval(function() {
+      self.populateCarers();
       self.pingOnline();
-    }, 5000);
+    }, 3000);
   };
 
-  MainCtrl.prototype.pingOnline = function() {
+  MainCtrl.prototype.populateCarers = function() {
     var self = this;
     this.http({
       method: 'GET',
@@ -39,9 +40,6 @@
       method: 'GET',
       url: SERVER_URL + 'stayOnline/' + this.username + '/'
     });
-  };
-
-  MainCtrl.prototype.whatever = function() {
   };
 
   var Config = function($interpolateProvider) {

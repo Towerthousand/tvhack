@@ -27,5 +27,11 @@ def users(uid):
 
     return jsonify({'users': users_info})
 
+
+@app.route('/api/stayOnline/<uid>', methods=['PUSH'])
+def stay_alive(uid):
+    """ Notifies the server that uid is still online """
+    return 'OK'
+
 if __name__ == "__main__":
     app.run(debug=True)

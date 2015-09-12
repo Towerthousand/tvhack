@@ -17,10 +17,10 @@ var gulp = require('gulp'),
 gulp.task('styles', function() {
   return sass('src/styles/main.scss', { style: 'expanded' })
     .pipe(autoprefixer())
-    .pipe(gulp.dest('dist/assets/css'))
+    .pipe(gulp.dest('static/css'))
     .pipe(rename({suffix: '.min'}))
     .pipe(minifycss())
-    .pipe(gulp.dest('dist/assets/css'))
+    .pipe(gulp.dest('static/css'))
     .pipe(notify({ message: 'Styles task complete' }));
 });
 
@@ -28,10 +28,10 @@ gulp.task('scripts', function() {
   var combined = combiner.obj([
     gulp.src('src/scripts/**/*.js'),
     concat('main.js'),
-    gulp.dest('dist/assets/js'),
+    gulp.dest('static/js'),
     rename({suffix: '.min'}),
     uglify(),
-    gulp.dest('dist/assets/js'),
+    gulp.dest('static/js'),
     notify({ message: 'Scripts task complete' })
   ]);
   combined.on('error', console.error.bind(console));
@@ -40,26 +40,26 @@ gulp.task('scripts', function() {
 
 gulp.task('fonts', function() {
   return gulp.src('src/fonts/**/*')
-    .pipe(gulp.dest('dist/assets/fonts'))
+    .pipe(gulp.dest('static/fonts'))
     .pipe(notify({ message: 'Fonts task complete' }));
 });
 
 gulp.task('dependencies', function() {
   return gulp.src(['bower_components/**/*.min.js', 'bower_components/**/*.min.js.map', '!bower_components/**/src/**/*.min.js'])
     .pipe(flatten({ includeParents: 0}))
-    .pipe(gulp.dest('dist/assets/js'))
+    .pipe(gulp.dest('static/js'))
     .pipe(notify({ message: 'Dependencies task complete' }));
 });
 
 gulp.task('images', function() {
   return gulp.src('src/images/**/*')
     .pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
-    .pipe(gulp.dest('dist/assets/img'))
+    .pipe(gulp.dest('static/img'))
     .pipe(notify({ message: 'Images task complete' }));
 });
 
 gulp.task('clean', function(cb) {
-    del(['dist/assets/css', 'dist/assets/js', 'dist/assets/img'], cb)
+    del(['static/css', 'static/js', 'static/img'], cb)
 });
 
 gulp.task('default', ['clean'], function() {

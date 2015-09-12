@@ -1,22 +1,44 @@
-//If we are a stb, set the resolution
-if (!!navigator.setResolution) {
-  navigator.setResolution(1280, 720);
-}
+(function() {
+  //If we are a stb, set the resolution
+  if (!!navigator.setResolution) {
+    navigator.setResolution(1280, 720);
+  }
 
-//Disable websecutiry to bypass CORS issues if any.
-if (!!navigator.setWebSecurityEnabled){
-  navigator.setWebSecurityEnabled(false);
-}
-
-var carersRef = new Firebase("https://tvhack.firebaseio.com/users-carer");
-
-carersRef.once('value', function(snapshot) {
-  console.log(snapshot, snapshot.val());
-});
+  //Disable websecutiry to bypass CORS issues if any.
+  if (!!navigator.setWebSecurityEnabled){
+    navigator.setWebSecurityEnabled(false);
+  }
 
 
-angular.module('livesaver', [])
+  var tvUser = 'u1';
+  var carerUsersRef = new Firebase('https://tvhack.firebaseio.com/users-carer');
+  var tvUserRef = new Firebase('https://tvhack.firebaseio.com/users-tv/' + tvUser);
 
-.controller('main', function($scope) {
-  $scope.test = 20;
-})
+  carerUsersRef.once('value', function(snap) {
+  });
+
+
+  angular.module('livesaver', [])
+
+  .controller('main', function($scope) {
+    $scope.carers = [];
+
+    tvUserRef.once('value', function(tvUserData) {
+      // console.log(tvUserData.val());
+      $scope.user = tvUserData.val();
+
+      carerUsersRef.once('value', function(snap) {
+        var users = snap.val();
+        console.log(users);
+
+        for (var key in users) {
+          var user = users[key];
+          if (!~user.caresFor.indexOf(tvUser)) continue;
+          $scope.carers.push(user);
+        }
+
+        $scope.$apply();
+      });
+    });
+  })
+})();

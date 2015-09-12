@@ -19,12 +19,14 @@
       </div>
       <div id="answer">Answer</div>
       <div id="decline">Decline</div>
-    </div> 
+    </div>
 
     <div id="accordion">
       <div id="accordion-container">
         <ul id="accordion-list">
-          <li class="carer"></li>
+          <li class="carer" ng-repeat="carer in carers">
+            {{carer}}
+          </li>
         </ul>
       </div>
     </div>

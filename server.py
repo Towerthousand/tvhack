@@ -18,7 +18,7 @@ def index():
 
 
 @app.route('/api/isCaredBy/<uid>/', methods=['GET'])
-def users(uid):
+def usersCaredBy(uid):
     """ Returns the user objects taking care of a given user """
     users = firebase.get('/users-tv/' + uid + '/isCaredBy', None)
     users_info = []
@@ -26,6 +26,20 @@ def users(uid):
         users_info.append(firebase.get('/users-carer', user))
 
     return jsonify({'users': users_info})
+
+
+@app.route('/api/user-tv/<uid>/', methods=['GET'])
+def user_tv(uid):
+    """ Returns the requested tv user object  """
+    user = firebase.get('/users-tv', uid)
+    return jsonify(user)
+
+
+@app.route('/api/user-carer/<uid>/', methods=['GET'])
+def user_carer(uid):
+    """ Returns the requested carer user object """
+    user = firebase.get('/users-carer', uid)
+    return jsonify(user)
 
 
 @app.route('/api/stayOnline/<uid>', methods=['PUSH'])

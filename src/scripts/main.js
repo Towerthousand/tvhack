@@ -9,34 +9,14 @@
     navigator.setWebSecurityEnabled(false);
   }
 
+  var SERVER_URL = '104.131.78.132:5000';
 
-  var tvUser = 'u1';
-  var carerUsersRef = new Firebase('http://tvhack.firebaseio.com/users-carer');
-  var tvUserRef = new Firebase('http://tvhack.firebaseio.com/users-tv/' + tvUser);
-
-  carerUsersRef.once('value', function(snap) {
-  });
-
-
+  //angular
   angular.module('livesaver', [])
 
-  .controller('main', function($scope) {
-    $scope.carers = [];
+  .controller('main', ['$scope', function($scope) {
+  }])
 
-    tvUserRef.once('value', function(tvUserData) {
-      // console.log(tvUserData.val());
-      $scope.user = tvUserData.val();
-
-      carerUsersRef.once('value', function(snap) {
-        var users = snap.val();
-        console.log(users);
-
-        for (var key in users) {
-          var user = users[key];
-          if (!~user.caresFor.indexOf(tvUser)) return;
-          $scope.carers.push(user);
-        }
-      });
-    });
-  })
+  .service('carers', [function() {
+  }]);
 })();

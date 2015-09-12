@@ -33,11 +33,9 @@
 
         for (var key in users) {
           var user = users[key];
-          if (!~user.caresFor.indexOf(tvUser)) continue;
+          if (!~user.caresFor.indexOf(tvUser)) return;
           $scope.carers.push(user);
         }
-
-        $scope.$apply();
       });
     });
   })

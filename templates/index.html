@@ -25,7 +25,10 @@
       <div id="accordion-container">
         <ul id="accordion-list">
           <li class="carer" ng-repeat="carer in ctrl.carers">
-            {{carer}}
+            <img ng-src="[[ carer.profilePicUrl ]]" alt="">
+            <div class="name">
+              [[ carer.firstName ]] [[ carer.lastName ]]
+            </div>
           </li>
         </ul>
       </div>

@@ -8,8 +8,23 @@ html, body {
   font-size: 20px;
 }
 
+#accordion {
+  background: rgba(255, 255, 255, 0.5);
+
+  #accordion-list {
+    padding: 0;
+    margin: 0;
+
+    .carer {
+      float: left;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
 #notification {
-  display: table;
+  display: none;//table;
   border-radius: 40px;
   background: rgba(255, 255, 255, 0.5);
   font-weight: bold;

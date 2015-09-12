@@ -44,6 +44,12 @@
   MainCtrl.prototype.whatever = function() {
   };
 
+  var Config = function($interpolateProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+  }
+
   angular.module('livesaver', [])
+  .config(['$interpolateProvider', Config])
   .controller('main', ['$scope', '$http', MainCtrl]);
 })();

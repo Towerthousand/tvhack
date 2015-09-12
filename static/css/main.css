@@ -1,31 +1,56 @@
+* {
+  box-sizing: border-box;
+}
+
 html, body {
   background: transparent;
-  background: #900;
   font-family: Lato;
   font-size: 20px;
 }
 
+.status {
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+.status.online {
+  color: #028c00;
+}
+.status.offline {
+  color: #d9534f;
+}
+
 #accordion {
-  background: rgba(255, 255, 255, 0.5);
-  height: 2rem;
-  width: 2em;
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 0.2rem solid rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-weight: bold;
+  right: 0;
 }
 #accordion #accordion-list {
   padding: 0;
+  list-style: none;
   margin: 0;
 }
 #accordion #accordion-list .carer {
   float: left;
   margin: 0;
   padding: 0;
+  width: 6rem;
 }
 #accordion #accordion-list .carer img {
-  height: 1rem;
-  width: 1rem;
+  height: 6rem;
+  width: 6rem;
 }
 #accordion #accordion-list .carer .name {
-  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: block;
+  white-space: nowrap;
   text-overflow: ellipsis;
+  text-align: center;
 }
 
 #notification {
@@ -47,7 +72,7 @@ html, body {
   border-radius: 50%;
 }
 #notification #answer {
-  background: #5cb85c;
+  background: #028c00;
 }
 #notification #decline {
   background: #d9534f;

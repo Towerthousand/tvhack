@@ -20,18 +20,26 @@
       <div id="answer">Answer</div>
       <div id="decline">Decline</div>
     </div>
-    [[ ctrl.state ]]
 
     <div id="container" ng-show="ctrl.state">
-      <div id="accordion" ng-show="ctrl.state == 'accordion'">
+      fdsfa
+      <div id="accordion">
         <div id="accordion-container">
           <ul id="accordion-list">
-            <li class="carer" ng-repeat="carer in ctrl.carers">
+            <li class="carer">
+              <img src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xat1/v/t1.0-1/c20.97.647.647/s160x160/11295927_821754584599114_1130007854582966439_n.jpg?oh=c94f2e8784bd40897ddcaa971049fa45&oe=566803E2&__gda__=1453802551_fc1b86e382cb85b5206031d7e4664781" alt="">
+              <div class="name">
+                Andrew Milson <br>
+                <span class="status online">online</span>
+              </div>
+            </li>
+
+            <!-- <li class="carer" ng-repeat="carer in ctrl.carers">
               <img ng-src="[[ carer.profilePicUrl ]]" alt="">
               <div class="name">
                 [[ carer.firstName ]] [[ carer.lastName ]]
               </div>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>

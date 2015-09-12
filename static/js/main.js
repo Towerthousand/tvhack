@@ -29,8 +29,11 @@
       navigator.setWebSecurityEnabled(false);
     }
 
-    window.onkeydown = this.handleControlKey;
+    window.onkeydown = this.handleControlKey.bind(this);
+    window.test = this;
 
+    this.scope = $scope;
+    this.state = '';
     this.http = $http;
     this.carers = [];
     var self = this;
@@ -47,7 +50,7 @@
       url: SERVER_URL + 'isCaredBy/' + username + '/'
     })
     .success(function(data, status, headers, config) {
-      self.carers = carers.users;
+      self.carers = data.users;
     });
   };
 
@@ -57,6 +60,7 @@
     if (code == keyEnum.enter) {
       if (!this.state) {
         this.state = 'accordion';
+        this.scope.$apply();
       }
 
       // if (this.state = 'accordion') {
@@ -66,10 +70,10 @@
   }
 
   MainCtrl.prototype.pingOnline = function() {
-    this.http({
-      method: 'GET',
-      url: SERVER_URL + 'stayOnline/' + username + '/'
-    });
+    // this.http({
+    //   method: 'GET',
+    //   url: SERVER_URL + 'stayOnline/' + username + ''
+    // });
   };
 
   var Config = function($interpolateProvider) {

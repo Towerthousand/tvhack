@@ -199,11 +199,11 @@ function init() {
     }
 
     if (code == 52) {
-      mainSelf.http({method: 'GET', url: '/notify/' + username + '/'});
+      mainSelf.http({method: 'GET', url: FRONTEND_URL + 'notify/' + username + '/'});
     }
 
     if (code == 53) {
-      mainSelf.http({method: 'GET', url: '/denotify/' + username + '/'});
+      mainSelf.http({method: 'GET', url: FRONTEND_URL + 'denotify/' + username + '/'});
     }
 
     mainSelf.scope.$apply();

@@ -39,10 +39,19 @@ html, body {
   margin: 0;
   padding: 0;
   width: 6rem;
+  margin-right: 2rem;
+  -webkit-transition: -webkit-transform 0.5s linear;
+          transition: transform 0.5s linear;
+}
+#accordion #accordion-list .carer.active {
+  -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+          transform: scale(1.2);
 }
 #accordion #accordion-list .carer img {
   height: 6rem;
   width: 6rem;
+  border-radius: 50%;
 }
 #accordion #accordion-list .carer .name {
   width: 100%;

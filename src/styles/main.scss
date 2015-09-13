@@ -44,10 +44,17 @@ html, body {
       margin: 0;
       padding: 0;
       width: 6rem;
+      margin-right: 2rem;
+      transition: transform 0.5s linear;
+
+      &.active {
+        transform: scale(1.2);
+      }
 
       img {
         height: 6rem;
         width: 6rem;
+        border-radius: 50%;
       }
 
       .name {

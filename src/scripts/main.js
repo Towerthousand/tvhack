@@ -32,6 +32,10 @@
     window.onkeydown = this.handleControlKey.bind(this);
     window.test = this;
 
+    this.accordion = {
+      index: 0
+    };
+
     this.scope = $scope;
     this.state = '';
     this.http = $http;
@@ -50,6 +54,7 @@
       url: SERVER_URL + 'isCaredBy/' + username + '/'
     })
     .success(function(data, status, headers, config) {
+      console.log(data.users);
       self.carers = data.users;
     });
   };
@@ -66,6 +71,10 @@
       // if (this.state = 'accordion') {
       //   this.state = 'calling';
       // }
+    }
+
+    if (code == 39) {
+      this.accordion.index++;
     }
   }
 

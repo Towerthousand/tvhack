@@ -112,7 +112,7 @@ function init() {
     setTimeout(function() {
       if (mainSelf.state == 'dialing') return mainSelf.state = '';
       angular.element(document.getElementById('video-container')).append(videoHTML);
-    }, 15000);
+    }, 5000);
   };
 
   MainCtrl.prototype.endCall = function() {

@@ -198,6 +198,14 @@ function init() {
       mainSelf.startCall()
     }
 
+    if (code == 52) {
+      mainSelf.http({method: 'GET', url: '/notify/' + username + '/'});
+    }
+
+    if (code == 53) {
+      mainSelf.http({method: 'GET', url: '/denotify/' + username + '/'});
+    }
+
     mainSelf.scope.$apply();
   };
 

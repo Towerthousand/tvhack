@@ -18,6 +18,19 @@ html, body {
   font-size: 20px;
 }
 
+#close-call {
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  position: absolute;
+  bottom: 1rem;
+  text-align: center;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+      -ms-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+
 .status {
   font-size: 0.8rem;
   font-weight: 900;

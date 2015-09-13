@@ -88,21 +88,21 @@ function init() {
 
   MainCtrl.prototype.populateCalling = function() {
     var self = this;
-    // this.http({
-    //   method: 'GET',
-    //   url: SERVER_URL + 'isCalling/' + username + '/'
-    // })
-    // .success(function(data, status, headers, config) {
-    //   if(data.isCalling) {
-    //     if(!self.inCall) {
-    //       self.http({
-    //         method: 'GET',
-    //         url: SERVER_URL + 'uncall/' + username + '/'
-    //       });
-    //       self.startCall();
-    //     };
-    //   }
-    // });
+    this.http({
+      method: 'GET',
+      url: SERVER_URL + 'isCalling/' + username + '/'
+    })
+    .success(function(data, status, headers, config) {
+      if(data.isCalling) {
+        if(!self.inCall) {
+          self.http({
+            method: 'GET',
+            url: SERVER_URL + 'uncall/' + username + '/'
+          });
+          self.startCall();
+        };
+      }
+    });
   };
 
   MainCtrl.prototype.startCall = function() {

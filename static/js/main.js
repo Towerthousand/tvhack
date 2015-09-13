@@ -42,15 +42,45 @@ function init() {
     this.state = '';
     this.http = $http;
     this.carers = [];
-    var self = mainSelf = this;
+    this.inCall = false;
+    var self = this;
 
     this.stayAlive = setInterval(function() {
       self.populateCarers();
       self.pingOnline();
+      self.populateCalling();
     }, 1000);
 
     self.populateCarers();
     self.pingOnline();
+    self.populateCalling();
+  };
+
+  MainCtrl.prototype.populateCalling = function() {
+    var self = this;
+    this.http({
+      method: 'GET',
+      url: SERVER_URL + 'isCalling/' + username + '/'
+    })
+    .success(function(data, status, headers, config) {
+      if(data.isCalling) {
+        if(!self.inCall) {
+          self.http({
+            method: 'GET',
+            url: SERVER_URL + 'uncall/' + username + '/'
+          });
+          self.startCall();
+        };
+      }
+    });
+  };
+
+  MainCtrl.prototype.startCall = function() {
+    self.inCall = true;
+  };
+
+  MainCtrl.prototype.endCall = function() {
+    self.inCall = false;
   };
 
   MainCtrl.prototype.populateCarers = function() {

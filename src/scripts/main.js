@@ -110,12 +110,12 @@ function init() {
     console.log(this.state);
 
     setTimeout(function() {
-      if (mainSelf.state == 'dialing') {
+      if (mainSelf.state == 'dialing' || mainSelf.state == '') {
         console.log('Cancelling call');
         return mainSelf.state = '';
       }
       else angular.element(document.getElementById('hotbod')).append(videoHTML);
-    }, 5000);
+    }, 15000);
   };
 
   MainCtrl.prototype.endCall = function() {

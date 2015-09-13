@@ -16,9 +16,15 @@ _calling = False
 
 
 @app.route('/')
-def index():
+def render_index():
     """ Returns the DirectTV UI page """
     return render_template('index.html')
+
+
+@app.route('/call')
+def render_call():
+    """ Returns the DirectTV UI page """
+    return render_template('call.html')
 
 
 @app.route('/api/isCaredBy/<uid>/', methods=['GET'])

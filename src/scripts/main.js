@@ -16,6 +16,36 @@ function init() {
     9: 57
   };
 
+  var videoHTML = [
+    '<video',
+    'src="http://104.131.78.132:80/static/test.m3u8"',
+    'height="486" width="864"',
+    'id="vid" autoplay="true"',
+    'onabort="writeScreen(\' ABORT \')"',
+    'oncanplay="writeScreen(\' CAN PLAY \')"',
+    'oncanplaythrough="writeScreen(\' CAN PLAY THROUGH\' )"',
+    'oncuechange="writeScreen(\' CUE CHANGE \')"',
+    'ondurationchange="writeScreen(\' DURATION CHANGE \')"',
+    'onemptied="writeScreen(\' EMPTIED \')"',
+    'onended="writeScreen( \'ENDED\' )"',
+    'onerror="writeScreen(\' ERROR\' )"',
+    'onloadeddata="writeScreen(\' LOADED DATA \')"',
+    'onloadedmetadata="writeScreen(\' LOADED METADATA \')"',
+    'onloadstart="writeScreen(\' LOAD START \')"',
+    'onpause="writeScreen(\' PAUSE \')"',
+    'onplay="writeScreen(\' PLAY \')"',
+    'onplaying="writeScreen(\' PLAYING \')"',
+    'onprogress="writeScreen(\' PROGRESS \')"',
+    'onratechange="writeScreen(\' RATE CHANGE \')"',
+    'onseeked="writeScreen(\' SEEKED \')"',
+    'onseeking="writeScreen(\' SEEKING \')"',
+    'onstalled="writeScreen(\' STALLED \')"',
+    'onsuspend="writeScreen(\' SUSPEND \')"',
+    'onvolumechange="writeScreen(\' VOLUME CHANGE \')"',
+    'onwaiting="writeScreen(\' WAITING \')">',
+    '</video>'
+  ].join('');
+
   document.body.className = '';
 
   //angular
@@ -43,7 +73,7 @@ function init() {
     this.http = $http;
     this.carers = [];
     this.inCall = false;
-    var self = this;
+    var self = mainSelf = this;
 
     this.stayAlive = setInterval(function() {
       self.populateCarers();
@@ -58,25 +88,30 @@ function init() {
 
   MainCtrl.prototype.populateCalling = function() {
     var self = this;
-    this.http({
-      method: 'GET',
-      url: SERVER_URL + 'isCalling/' + username + '/'
-    })
-    .success(function(data, status, headers, config) {
-      if(data.isCalling) {
-        if(!self.inCall) {
-          self.http({
-            method: 'GET',
-            url: SERVER_URL + 'uncall/' + username + '/'
-          });
-          self.startCall();
-        };
-      }
-    });
+    // this.http({
+    //   method: 'GET',
+    //   url: SERVER_URL + 'isCalling/' + username + '/'
+    // })
+    // .success(function(data, status, headers, config) {
+    //   if(data.isCalling) {
+    //     if(!self.inCall) {
+    //       self.http({
+    //         method: 'GET',
+    //         url: SERVER_URL + 'uncall/' + username + '/'
+    //       });
+    //       self.startCall();
+    //     };
+    //   }
+    // });
   };
 
   MainCtrl.prototype.startCall = function() {
-    self.inCall = true;
+    this.state = 'dialing';
+    console.log(this.state);
+
+    setTimeout(function() {
+      angular.element(document.getElementById('video-container')).append(videoHTML);
+    }, 15000);
   };
 
   MainCtrl.prototype.endCall = function() {
@@ -102,9 +137,10 @@ function init() {
 
   MainCtrl.prototype.handleControlKey = function(e) {
     var code = e.keyCode;
-    console.log('bungy ' + code);
 
     if (code == keyEnum.enter) {
+      mainSelf.startCall();
+
       if (mainSelf.state == 'accordion') {
         var userToCall = mainSelf.carers[mainSelf.accordion.index];
       }
@@ -122,6 +158,14 @@ function init() {
     if (code == 40) {
       mainSelf.state = mainSelf.state ? '' : 'accordion';
       e.preventDefault();
+    }
+
+    if (code == 49 && mainSelf.state == 'dialing') {
+      mainSelf.state = 'connecting';
+    }
+
+    if (code == 50 && mainSelf.state == 'dialing') {
+      mainSelf.state = '';
     }
 
     mainSelf.scope.$apply();

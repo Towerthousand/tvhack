@@ -10,10 +10,10 @@
     <script src="static/js/main.js"></script>
   </head>
   <body class="preload" onload="init()" ng-controller="main as ctrl">
-    <img ng-show="ctrl.state" id="background" src="static/img/gradient.png" alt="">
-    <div id="notification">
+    <img ng-show="ctrl.state == 'accordion'" id="background" src="static/img/gradient.png" alt="">
+    <div id="notification" ng-show="ctrl.state == 'dialing'">
       <div id="profile-container">
-        <img id="profile" src="static/img/andrew.png" style="margin-bottom: -3px;" alt="">
+        <img id="profile" src="static/img/miquel.png" style="margin-bottom: -3px;" alt="">
       </div>
       <div id="name">
         Andrew Milson
@@ -24,7 +24,21 @@
       </div>
     </div>
 
-    <div id="container" ng-show="ctrl.state">
+    <div id="video" ng-show="ctrl.state == 'connecting'">
+      <div id="loading">
+        <img src="static/img/miquel.png" alt=""><br>
+        Miquel Llobet <br>
+        Connecting
+        <span>
+          <span class="one">.</span>
+          <span class="two">.</span>
+          <span class="three">.</span>
+        </span>
+      </div>
+      <div id="video-container"></div>
+    </div>
+
+    <div id="container" ng-show="ctrl.state == 'accordion'">
       <div id="accordion">
         <div id="accordion-container">
           <ul id="accordion-list">

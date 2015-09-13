@@ -19,32 +19,32 @@ function init() {
   var videoHTML = [
     '<video',
     'src="http://104.131.78.132:80/static/test.m3u8"',
-    'height="486" width="864"',
+    'height="400" width="700"',
     'id="vid" autoplay="true"',
-    'onabort="writeScreen(\' ABORT \')"',
-    'oncanplay="writeScreen(\' CAN PLAY \')"',
-    'oncanplaythrough="writeScreen(\' CAN PLAY THROUGH\' )"',
-    'oncuechange="writeScreen(\' CUE CHANGE \')"',
-    'ondurationchange="writeScreen(\' DURATION CHANGE \')"',
-    'onemptied="writeScreen(\' EMPTIED \')"',
-    'onended="writeScreen( \'ENDED\' )"',
-    'onerror="writeScreen(\' ERROR\' )"',
-    'onloadeddata="writeScreen(\' LOADED DATA \')"',
-    'onloadedmetadata="writeScreen(\' LOADED METADATA \')"',
-    'onloadstart="writeScreen(\' LOAD START \')"',
-    'onpause="writeScreen(\' PAUSE \')"',
-    'onplay="writeScreen(\' PLAY \')"',
-    'onplaying="writeScreen(\' PLAYING \')"',
-    'onprogress="writeScreen(\' PROGRESS \')"',
-    'onratechange="writeScreen(\' RATE CHANGE \')"',
-    'onseeked="writeScreen(\' SEEKED \')"',
-    'onseeking="writeScreen(\' SEEKING \')"',
-    'onstalled="writeScreen(\' STALLED \')"',
-    'onsuspend="writeScreen(\' SUSPEND \')"',
-    'onvolumechange="writeScreen(\' VOLUME CHANGE \')"',
-    'onwaiting="writeScreen(\' WAITING \')">',
+    'onabort="console.log(\' ABORT \')"',
+    'oncanplay="console.log(\' CAN PLAY \')"',
+    'oncanplaythrough="console.log(\' CAN PLAY THROUGH\' )"',
+    'oncuechange="console.log(\' CUE CHANGE \')"',
+    'ondurationchange="console.log(\' DURATION CHANGE \')"',
+    'onemptied="console.log(\' EMPTIED \')"',
+    'onended="console.log( \'ENDED\' )"',
+    'onerror="console.log(\' ERROR\' )"',
+    'onloadeddata="console.log(\' LOADED DATA \')"',
+    'onloadedmetadata="console.log(\' LOADED METADATA \')"',
+    'onloadstart="console.log(\' LOAD START \')"',
+    'onpause="console.log(\' PAUSE \')"',
+    'onplay="console.log(\' PLAY \')"',
+    'onplaying="console.log(\' PLAYING \')"',
+    'onprogress="console.log(\' PROGRESS \')"',
+    'onratechange="console.log(\' RATE CHANGE \')"',
+    'onseeked="console.log(\' SEEKED \')"',
+    'onseeking="console.log(\' SEEKING \')"',
+    'onstalled="console.log(\' STALLED \')"',
+    'onsuspend="console.log(\' SUSPEND \')"',
+    'onvolumechange="console.log(\' VOLUME CHANGE \')"',
+    'onwaiting="console.log(\' WAITING \')">',
     '</video>'
-  ].join('');
+  ].join(' ');
 
   document.body.className = '';
 
@@ -110,8 +110,11 @@ function init() {
     console.log(this.state);
 
     setTimeout(function() {
-      if (mainSelf.state == 'dialing') return mainSelf.state = '';
-      angular.element(document.getElementById('video-container')).append(videoHTML);
+      if (mainSelf.state == 'dialing') {
+        console.log('Cancelling call');
+        return mainSelf.state = '';
+      }
+      else angular.element(document.getElementById('video-container')).append(videoHTML);
     }, 5000);
   };
 

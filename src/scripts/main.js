@@ -79,12 +79,10 @@ function init() {
 
     this.stayAlive = setInterval(function() {
       self.populateCarers();
-      self.pingOnline();
-      self.populateCalling();
-    }, 1000);
+      //self.populateCalling();
+    }, 4000);
 
     self.populateCarers();
-    self.pingOnline();
     self.populateCalling();
   };
 
@@ -201,13 +199,6 @@ function init() {
     }
 
     mainSelf.scope.$apply();
-  };
-
-  MainCtrl.prototype.pingOnline = function() {
-    // this.http({
-    //   method: 'GET',
-    //   url: SERVER_URL + 'stayOnline/' + username + ''
-    // });
   };
 
   var callSelf;

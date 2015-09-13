@@ -114,7 +114,7 @@ function init() {
         console.log('Cancelling call');
         return mainSelf.state = '';
       }
-      else angular.element(document.getElementById('dummy')).append(videoHTML);
+      else angular.element(document.getElementById('hotbod')).append(videoHTML);
     }, 5000);
   };
 

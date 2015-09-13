@@ -1,5 +1,6 @@
 function init() {
-  var SERVER_URL = 'http://104.131.78.132:80/api/';
+  var FRONTEND_URL = 'http://104.131.78.132:80/'
+  var SERVER_URL = FRONTEND_URL + 'api/';
   var username = 'u1';
   window.keyEnum = {
     enter: 13,
@@ -182,8 +183,24 @@ function init() {
     // });
   };
 
-  var CallCtrl = function() {
+  var callSelf;
+  var CallCtrl = function($scope, $http) {
+    callSelf = this;
+    this.http = $http;
+
+    window.onkeydown = this.handleControlKey
   };
+
+  CallCtrl.prototype.handleControlKey = function(e) {
+    var code = e.keyCode;
+
+    if (code == 49) {
+      callSelf.http({
+        method: 'GET',
+        url: 'http://35.2.78.140:8080/itv/startURL?url=http://' + FRONTEND_URL + 'call'
+      })
+    }
+  }
 
   var Config = function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
@@ -192,7 +209,8 @@ function init() {
 
   angular.module('livesaver', [])
   .config(['$interpolateProvider', Config])
-  .controller('main', ['$scope', '$http', MainCtrl]);
+  .controller('main', ['$scope', '$http', MainCtrl])
+  .controller('call', ['$scope', '$http', CallCtrl]);
 
   angular.bootstrap(document.body, ['livesaver']);
 };

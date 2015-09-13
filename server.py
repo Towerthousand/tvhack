@@ -12,6 +12,8 @@ CORS(app)
 
 firebase = firebase.FirebaseApplication('https://tvhack.firebaseio.com', None)
 
+_calling = False
+
 
 @app.route('/')
 def index():
@@ -47,6 +49,34 @@ def user_carer(uid):
 @app.route('/api/stayOnline/<uid>/', methods=['GET'])
 def stay_alive(uid):
     """ Notifies the server that uid is still online """
+    global _calling
+    return 'OK'
+
+
+@app.route('/api/call/<uid>/', methods=['GET'])
+def call(uid):
+    """ calls a given uid """
+    global _calling
+    _calling = True
+    return 'OK'
+
+
+@app.route('/api/uncall/<uid>/', methods=['GET'])
+def uncall(uid):
+    """ uncalls a given uid """
+    global _calling
+    _calling = False
+    return 'OK'
+
+
+@app.route('/api/isCalling/<uid>/', methods=['GET'])
+def is_calling(uid):
+    """ Returns true if uid is being called """
+    return jsonify({"isCalling": _calling})
+
+
+@app.route('/api/remind/<uid>/', methods=['GET'])
+def remid(uid):
     return 'OK'
 
 if __name__ == "__main__":

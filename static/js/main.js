@@ -182,6 +182,9 @@ function init() {
     // });
   };
 
+  var CallCtrl = function() {
+  };
+
   var Config = function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');

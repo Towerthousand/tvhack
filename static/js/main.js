@@ -1,5 +1,5 @@
 function init() {
-  var FRONTEND_URL = 'http://104.131.78.132:80/'
+  var FRONTEND_URL = 'http://104.131.146.161:80/'
   var SERVER_URL = FRONTEND_URL + 'api/';
   var TV_URL = 'http://35.2.78.140:8080/';
   var username = 'u1';

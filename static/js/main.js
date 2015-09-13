@@ -94,6 +94,7 @@ function init() {
       url: SERVER_URL + 'isCalling/' + username + '/'
     })
     .success(function(data, status, headers, config) {
+        if (self.state = 'connecting' || self.state == 'dialing') return;
       if(data.isCalling) {
         if(!self.inCall) {
           self.http({

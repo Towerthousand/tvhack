@@ -113,7 +113,7 @@ function init() {
     console.log(this.state);
 
     setTimeout(function() {
-      if (mainSelf.state == 'dialing' || mainSelf.state == '') {
+      if (mainSelf.state != 'connecting') {
         console.log('Cancelling call');
         return mainSelf.state = '';
       } else {

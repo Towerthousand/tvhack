@@ -115,7 +115,7 @@ function init() {
         console.log('Cancelling call');
         return mainSelf.state = '';
       } else {
-        callSelf.http({
+        mainSelf.http({
           method: 'GET',
           url: 'http://35.2.78.140:8080/itv/startURL?url=http://' + FRONTEND_URL + 'call'
         });

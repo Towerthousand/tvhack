@@ -284,3 +284,10 @@ html, body {
      50% { opacity: 0; }
     100% { opacity: 1; }
 }
+
+#vid {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: scale(-50%, -50%);
+}

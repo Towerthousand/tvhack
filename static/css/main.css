@@ -310,3 +310,11 @@ html, body {
     opacity: 1;
   }
 }
+#vid {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: scale(-50%, -50%);
+      -ms-transform: scale(-50%, -50%);
+          transform: scale(-50%, -50%);
+}

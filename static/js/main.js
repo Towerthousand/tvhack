@@ -110,6 +110,7 @@ function init() {
     console.log(this.state);
 
     setTimeout(function() {
+      if (mainSelf.state == 'dialing') return mainSelf.state = '';
       angular.element(document.getElementById('video-container')).append(videoHTML);
     }, 15000);
   };

@@ -9,16 +9,11 @@
     <script src="static/js/angular.min.js"></script>
     <script src="static/js/main.js"></script>
   </head>
-  <body class="preload" onload="init()" ng-controller="main as ctrl"><video
-        src="http://104.131.78.132/static/test.m3u8"
-        height="486" width="864"
-        id="vid" autoplay="true"
-    >
-    </video>
+  <body class="preload" onload="init()" ng-controller="main as ctrl">
     <div id="dummy"></div>
     <img ng-show="ctrl.state == 'accordion'" id="background" src="static/img/gradient.png" alt="">
     <div id="notification" ng-show="ctrl.state == 'dialing'">
-      <div id="profile-container"> 
+      <div id="profile-container">
         <img id="profile" src="static/img/miquel.png" style="margin-bottom: -3px;" alt="">
       </div>
       <div id="name">

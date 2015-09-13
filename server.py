@@ -27,6 +27,12 @@ def render_call():
     return render_template('call.html')
 
 
+@app.route('/message')
+def render_message():
+    """ Returns the message page """
+    return render_template('message.html')
+
+
 @app.route('/api/isCaredBy/<uid>/', methods=['GET'])
 def usersCaredBy(uid):
     """ Returns the user objects taking care of a given user """
@@ -84,6 +90,10 @@ def is_calling(uid):
 @app.route('/api/remind/<uid>/', methods=['GET'])
 def remid(uid):
     return 'OK'
+
+#@app.route('/api/notify/<id>/', methods=['GET'])
+#def notify(id):
+#    firebase.
 
 if __name__ == "__main__":
     app.run(debug=True)

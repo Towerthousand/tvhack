@@ -2,31 +2,63 @@
   box-sizing: border-box;
 }
 
+#background {
+  position: absolute;
+  width: 100%;
+  height: 17rem;
+  top: 0;
+  left: 0;
+}
+
 html, body {
   background: transparent;
   font-family: Lato;
+  padding: 0;
+  margin: 0;
   font-size: 20px;
 }
 
 .status {
   font-size: 0.8rem;
   font-weight: 900;
-}
-.status.online {
   color: #028c00;
 }
 .status.offline {
-  color: #d9534f;
+  color: #af1313;
+}
+
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+
+#container {
+  display: block !important;
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+  opacity: 1;
+  /* transform: translate(0, 0); */
+}
+#container.ng-hide {
+  opacity: 0;
+  /* transform: translate(0, -100%); */
+}
+
+#accordion-indication {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff, 1px 0 0 #fff;
 }
 
 #accordion {
-  background: rgba(0, 0, 0, 0.5);
-  border-bottom: 0.2rem solid rgba(0, 0, 0, 0.2);
   padding: 2rem;
   position: absolute;
+  color: #fff;
   top: 0;
   left: 0;
-  font-weight: bold;
   right: 0;
 }
 #accordion #accordion-list {
@@ -39,19 +71,22 @@ html, body {
   margin: 0;
   padding: 0;
   width: 6rem;
-  margin-right: 2rem;
-  -webkit-transition: -webkit-transform 0.5s linear;
-          transition: transform 0.5s linear;
+  margin-right: 3rem;
+  -webkit-transition: all 0.1s ease-in-out;
+          transition: all 0.1s ease-in-out;
+  -webkit-transform: scale(0.95);
+      -ms-transform: scale(0.95);
+          transform: scale(0.95);
 }
 #accordion #accordion-list .carer.active {
-  -webkit-transform: scale(1.2);
-      -ms-transform: scale(1.2);
-          transform: scale(1.2);
+  opacity: 1;
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1);
 }
 #accordion #accordion-list .carer img {
   height: 6rem;
   width: 6rem;
-  border-radius: 50%;
 }
 #accordion #accordion-list .carer .name {
   width: 100%;
@@ -63,26 +98,88 @@ html, body {
 }
 
 #notification {
-  display: none;
-  border-radius: 40px;
-  background: rgba(255, 255, 255, 0.5);
-  font-weight: bold;
+  display: table;
   position: absolute;
-  top: 0.2rem;
-  left: 0.2rem;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  top: 1rem;
+  right: 1rem;
+  -webkit-animation: tada 1s infinite linear;
+          animation: tada 1s infinite linear;
 }
 #notification > div {
   display: table-cell;
-  padding: 0.5rem;
+  padding: 1rem;
   vertical-align: middle;
 }
+#notification #profile-container {
+  padding-right: 0;
+}
 #notification #profile {
-  height: 2.5rem;
+  height: 3rem;
   border-radius: 50%;
 }
+#notification #name {
+  padding-right: 2.5rem;
+}
+#notification #controls {
+  padding: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
 #notification #answer {
-  background: #028c00;
+  height: 50%;
+  padding: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  color: #028c00;
 }
 #notification #decline {
-  background: #d9534f;
+  height: 50%;
+  padding: 0.8rem;
+  color: #af1313;
+}
+
+@-webkit-keyframes tada {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  10%, 20% {
+    -webkit-transform: scale3d(0.98, 0.98, 0.98) rotate3d(0, 0, 1, -1deg);
+    transform: scale3d(0.98, 0.98, 0.98) rotate3d(0, 0, 1, -1deg);
+  }
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 1deg);
+    transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 1deg);
+  }
+  40%, 60%, 80% {
+    -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, -1deg);
+    transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, -1deg);
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes tada {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  10%, 20% {
+    -webkit-transform: scale3d(0.98, 0.98, 0.98) rotate3d(0, 0, 1, -1deg);
+    transform: scale3d(0.98, 0.98, 0.98) rotate3d(0, 0, 1, -1deg);
+  }
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 1deg);
+    transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 1deg);
+  }
+  40%, 60%, 80% {
+    -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, -1deg);
+    transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, -1deg);
+  }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
 }

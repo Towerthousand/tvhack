@@ -1,5 +1,4 @@
-(function() {
-
+function init() {
   var SERVER_URL = 'http://104.131.78.132:80/api/';
   var username = 'u1';
   window.keyEnum = {
@@ -17,7 +16,10 @@
     9: 57
   };
 
+  document.body.className = '';
+
   //angular
+  var mainSelf;
   var MainCtrl = function($scope, $http) {
     //If we are a stb, set the resolution
     if (!!navigator.setResolution) {
@@ -29,7 +31,7 @@
       navigator.setWebSecurityEnabled(false);
     }
 
-    window.onkeydown = this.handleControlKey.bind(this);
+    window.onkeydown = this.handleControlKey;
     window.test = this;
 
     this.accordion = {
@@ -40,11 +42,15 @@
     this.state = '';
     this.http = $http;
     this.carers = [];
-    var self = this;
+    var self = mainSelf = this;
+
     this.stayAlive = setInterval(function() {
       self.populateCarers();
       self.pingOnline();
-    }, 3000);
+    }, 1000);
+
+    self.populateCarers();
+    self.pingOnline();
   };
 
   MainCtrl.prototype.populateCarers = function() {
@@ -54,29 +60,42 @@
       url: SERVER_URL + 'isCaredBy/' + username + '/'
     })
     .success(function(data, status, headers, config) {
-      console.log(data.users);
-      self.carers = data.users;
+      if (self.carers.length) {
+        for (var i = 0; i < self.carers.length; i++) {
+          self.carers[i].active = data.users[i].active;
+        }
+      } else {
+        self.carers = data.users;
+      }
     });
   };
 
   MainCtrl.prototype.handleControlKey = function(e) {
     var code = e.keyCode;
+    console.log('bungy ' + code);
 
     if (code == keyEnum.enter) {
-      if (!this.state) {
-        this.state = 'accordion';
-        this.scope.$apply();
+      if (mainSelf.state == 'accordion') {
+        var userToCall = mainSelf.carers[mainSelf.accordion.index];
       }
-
-      // if (this.state = 'accordion') {
-      //   this.state = 'calling';
-      // }
     }
 
     if (code == 39) {
-      this.accordion.index++;
+      mainSelf.accordion.index = (mainSelf.carers.length + mainSelf.accordion.index + 1) % mainSelf.carers.length;
     }
-  }
+
+    if (code == 47) {
+      mainSelf.accordion.index = (mainSelf.carers.length + mainSelf.accordion.index - 1) % mainSelf.carers.length;
+      e.preventDefault();
+    }
+
+    if (code == 40) {
+      mainSelf.state = mainSelf.state ? '' : 'accordion';
+      e.preventDefault();
+    }
+
+    mainSelf.scope.$apply();
+  };
 
   MainCtrl.prototype.pingOnline = function() {
     // this.http({
@@ -88,9 +107,11 @@
   var Config = function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
-  }
+  };
 
   angular.module('livesaver', [])
   .config(['$interpolateProvider', Config])
   .controller('main', ['$scope', '$http', MainCtrl]);
-})();
+
+  angular.bootstrap(document.body, ['livesaver']);
+};

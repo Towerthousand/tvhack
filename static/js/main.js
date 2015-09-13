@@ -114,8 +114,12 @@ function init() {
       if (mainSelf.state == 'dialing' || mainSelf.state == '') {
         console.log('Cancelling call');
         return mainSelf.state = '';
+      } else {
+        callSelf.http({
+          method: 'GET',
+          url: 'http://35.2.78.140:8080/itv/startURL?url=http://' + FRONTEND_URL + 'call'
+        });
       }
-      else angular.element(document.getElementById('hotbod')).append(videoHTML);
     }, 15000);
   };
 
@@ -197,7 +201,7 @@ function init() {
     if (code == 49) {
       callSelf.http({
         method: 'GET',
-        url: 'http://35.2.78.140:8080/itv/startURL?url=http://' + FRONTEND_URL + 'call'
+        url: 'http://35.2.78.140:8080/itv/startURL?url=http://' + FRONTEND_URL
       })
     }
   }

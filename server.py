@@ -91,9 +91,17 @@ def is_calling(uid):
 def remid(uid):
     return 'OK'
 
-#@app.route('/api/notify/<id>/', methods=['GET'])
-#def notify(id):
-#    firebase.
+
+@app.route('/api/notify/<id>/', methods=['GET'])
+def notify(id):
+    firebase.patch('/push-notifications', {0: True})
+    return 'OK'
+
+
+@app.route('/api/denotify/<id>/', methods=['GET'])
+def denotify(id):
+    firebase.patch('/push-notifications', {0: False})
+    return 'OK'
 
 if __name__ == "__main__":
     app.run(debug=True)

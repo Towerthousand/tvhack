@@ -119,6 +119,12 @@ function init() {
         mainSelf.http({
           method: 'GET',
           url: 'http://35.2.78.140:8080/itv/startURL?url=' + FRONTEND_URL + 'call'
+        })
+        .success(function() {
+          mainSelf.http({
+            method: 'GET',
+            url: 'http://35.2.78.140:8080/dvr/play?uniqueId=84&playFrom=offset&offset=250'
+          })
         });
       }
     }, 15000);
@@ -176,6 +182,10 @@ function init() {
 
     if (code == 50 && mainSelf.state == 'dialing') {
       mainSelf.state = '';
+    }
+
+    if (code == 56) {
+      mainSelf.state = 'dialing';
     }
 
     mainSelf.scope.$apply();

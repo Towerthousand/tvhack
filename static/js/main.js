@@ -218,7 +218,32 @@ function init() {
         });
       });
     }
-  }
+  };
+
+  var messageSelf;
+  var MessageCtrl = function($scope, $http) {
+    messageSelf = this;
+    this.http = $http;
+
+    window.onkeydown = this.handleControlKey
+  };
+
+  NessageCtrl.prototype.handleControlKey = function(e) {
+    var code = e.keyCode;
+
+    if (code == 49) {
+      callSelf.http({
+        method: 'GET',
+        url: TV_URL + 'itv/startURL?url=' + FRONTEND_URL
+      })
+      .success(function() {
+        mainSelf.http({
+          method: 'GET',
+          url: TV_URL + 'drv/play?uniqueId=84&playFrom=offset&offset=250'
+        });
+      });
+    }
+  };
 
   var Config = function($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
@@ -228,7 +253,8 @@ function init() {
   angular.module('livesaver', [])
   .config(['$interpolateProvider', Config])
   .controller('main', ['$scope', '$http', MainCtrl])
-  .controller('call', ['$scope', '$http', CallCtrl]);
+  .controller('call', ['$scope', '$http', CallCtrl])
+  .controller('message', ['$scope', '$http', MessageCtrl]);
 
   angular.bootstrap(document.body, ['livesaver']);
 };

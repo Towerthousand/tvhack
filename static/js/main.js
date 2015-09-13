@@ -227,7 +227,7 @@ function init() {
         url: TV_URL + 'itv/startURL?url=' + FRONTEND_URL
       })
       .success(function() {
-        mainSelf.http({
+        callSelf.http({
           method: 'GET',
           url: TV_URL + 'drv/play?uniqueId=84&playFrom=offset&offset=250'
         });
@@ -247,12 +247,12 @@ function init() {
     var code = e.keyCode;
 
     if (code == 49) {
-      callSelf.http({
+      messageSelf.http({
         method: 'GET',
         url: TV_URL + 'itv/startURL?url=' + FRONTEND_URL
       })
       .success(function() {
-        mainSelf.http({
+        messageSelf.http({
           method: 'GET',
           url: TV_URL + 'drv/play?uniqueId=84&playFrom=offset&offset=250'
         });

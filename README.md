@@ -83,3 +83,9 @@ Returns true if call is being made to uid
 
 ## GET /api/remind/&lt;uid&gt;/
 Reminds to call to a given user
+
+## GET /api/notify/&lt;uid&gt;/
+Notify the phone
+
+## GET /api/notify/&lt;uid&gt;/
+Stop notifying the phone

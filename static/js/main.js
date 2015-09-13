@@ -1,6 +1,7 @@
 function init() {
   var FRONTEND_URL = 'http://104.131.78.132:80/'
   var SERVER_URL = FRONTEND_URL + 'api/';
+  var TV_URL = 'http://35.2.78.140:8080/';
   var username = 'u1';
   window.keyEnum = {
     enter: 13,
@@ -94,13 +95,13 @@ function init() {
       url: SERVER_URL + 'isCalling/' + username + '/'
     })
     .success(function(data, status, headers, config) {
-        if (self.state = 'connecting' || self.state == 'dialing') return;
       if(data.isCalling) {
         if(!self.inCall) {
           self.http({
             method: 'GET',
             url: SERVER_URL + 'uncall/' + username + '/'
           });
+          if (self.state = 'connecting' || self.state == 'dialing') return;
           self.startCall();
         };
       }
@@ -118,13 +119,13 @@ function init() {
       } else {
         mainSelf.http({
           method: 'GET',
-          url: 'http://35.2.78.140:8080/itv/startURL?url=' + FRONTEND_URL + 'call'
+          url: TV_URL + 'itv/startURL?url=' + FRONTEND_URL + 'call'
         })
         .success(function() {
           mainSelf.http({
             method: 'GET',
-            url: 'http://35.2.78.140:8080/dvr/play?uniqueId=84&playFrom=offset&offset=250'
-          })
+            url: TV_URL + 'drv/play?uniqueId=84&playFrom=offset&offset=250'
+          });
         });
       }
     }, 15000);
@@ -212,7 +213,7 @@ function init() {
     if (code == 49) {
       callSelf.http({
         method: 'GET',
-        url: 'http://35.2.78.140:8080/itv/startURL?url=' + FRONTEND_URL
+        url: TV_URL + 'itv/startURL?url=' + FRONTEND_URL
       })
     }
   }

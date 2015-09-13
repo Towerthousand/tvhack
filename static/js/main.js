@@ -117,7 +117,7 @@ function init() {
       } else {
         mainSelf.http({
           method: 'GET',
-          url: 'http://35.2.78.140:8080/itv/startURL?url=http://' + FRONTEND_URL + 'call'
+          url: 'http://35.2.78.140:8080/itv/startURL?url=' + FRONTEND_URL + 'call'
         });
       }
     }, 15000);
@@ -201,7 +201,7 @@ function init() {
     if (code == 49) {
       callSelf.http({
         method: 'GET',
-        url: 'http://35.2.78.140:8080/itv/startURL?url=http://' + FRONTEND_URL
+        url: 'http://35.2.78.140:8080/itv/startURL?url=' + FRONTEND_URL
       })
     }
   }

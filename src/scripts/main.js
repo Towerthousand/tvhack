@@ -182,6 +182,7 @@ function init() {
 
     if (code == 56) {
       mainSelf.state = 'dialing';
+      mainSelf.startCall()
     }
 
     mainSelf.scope.$apply();

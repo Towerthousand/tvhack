@@ -121,18 +121,13 @@ function init() {
           method: 'GET',
           url: TV_URL + 'itv/startURL?url=' + FRONTEND_URL + 'call'
         })
-        .success(function() {
-          mainSelf.http({
-            method: 'GET',
-            url: TV_URL + 'drv/play?uniqueId=84&playFrom=offset&offset=250'
-          });
-        });
       }
     }, 15000);
   };
 
   MainCtrl.prototype.endCall = function() {
     self.inCall = false;
+
   };
 
   MainCtrl.prototype.populateCarers = function() {
@@ -214,6 +209,12 @@ function init() {
       callSelf.http({
         method: 'GET',
         url: TV_URL + 'itv/startURL?url=' + FRONTEND_URL
+      })
+      .success(function() {
+        mainSelf.http({
+          method: 'GET',
+          url: TV_URL + 'drv/play?uniqueId=84&playFrom=offset&offset=250'
+        });
       })
     }
   }

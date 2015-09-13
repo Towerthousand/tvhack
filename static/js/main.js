@@ -183,6 +183,10 @@ function init() {
       })
     }
 
+    if (code == 50 && mainSelf.state == 'messages') {
+      mainSelf.state = '';
+    }
+
     if (code == 49 && mainSelf.state == 'dialing') {
       mainSelf.state = 'connecting';
     }

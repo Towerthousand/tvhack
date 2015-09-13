@@ -171,6 +171,9 @@ html, body {
           transform: scale(1);
   opacity: 1;
 }
+#notification.left {
+  left: 1rem !important;
+}
 #notification.ng-hide {
   opacity: 0;
   top: 1.5rem;

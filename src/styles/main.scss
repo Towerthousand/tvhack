@@ -171,6 +171,10 @@ html, body {
   transform: scale(1);
   opacity: 1;
 
+  &.left {
+    left: 1rem !important;
+  }
+
   &.ng-hide {
     opacity: 0;
     top: 1.5rem;

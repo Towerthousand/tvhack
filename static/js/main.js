@@ -150,6 +150,10 @@ function init() {
   MainCtrl.prototype.handleControlKey = function(e) {
     var code = e.keyCode;
 
+    if (code == 55) {
+      mainSelf.state = 'messages';
+    }
+
     if (code == keyEnum.enter) {
       mainSelf.startCall();
 
@@ -170,6 +174,13 @@ function init() {
     if (code == 40) {
       mainSelf.state = mainSelf.state ? '' : 'accordion';
       e.preventDefault();
+    }
+
+    if (code == 49 && mainSelf.state == 'messages') {
+      mainSelf.http({
+        method: 'GET',
+        url: TV_URL + 'itv/startURL?url=' + FRONTEND_URL + 'message'
+      })
     }
 
     if (code == 49 && mainSelf.state == 'dialing') {
@@ -228,7 +239,7 @@ function init() {
     window.onkeydown = this.handleControlKey
   };
 
-  NessageCtrl.prototype.handleControlKey = function(e) {
+  MessageCtrl.prototype.handleControlKey = function(e) {
     var code = e.keyCode;
 
     if (code == 49) {

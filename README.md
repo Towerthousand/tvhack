@@ -66,3 +66,20 @@ Gets the requested tv user object
 
 ## GET /api/user-carer/&lt;uid&gt;/
 Gets the requested carer user object
+
+## GET /api/call/&lt;uid&gt;/
+Sets call flag for given uid
+
+## GET /api/uncall/&lt;uid&gt;/
+Unsets call for given uid
+
+## GET /api/isCalling/&lt;uid&gt;/
+Returns true if call is being made to uid
+```
+{
+    "isCalling": true
+}
+```
+
+## GET /api/remind/&lt;uid&gt;/
+Reminds to call to a given user

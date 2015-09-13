@@ -216,7 +216,7 @@ function init() {
           method: 'GET',
           url: TV_URL + 'drv/play?uniqueId=84&playFrom=offset&offset=250'
         });
-      })
+      });
     }
   }
 
